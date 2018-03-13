@@ -32,16 +32,28 @@ export default class GridContainer extends React.Component {
     render() {
         return (
             <div>
-            <Grid dataSource={this.dataSource}
-                filterable={true}
-                sortable={true}
-                height={320}
-                groupable={true}
-                pageable={true}>
-                <GridColumn field="ProductName" title="Product Name" />
-                <GridColumn field="UnitPrice" title="Unit Price" />
-                <GridColumn field="UnitsInStock" title="Units in Stock" />
-            </Grid>
+                <Grid dataSource={this.dataSource}
+                    filterable={true}
+                    sortable={true}
+                    height={320}
+                    groupable={true}
+                    pageable={true}
+                    toolbar={["excel", "pdf"]}
+                    excel={{
+                            fileName: "Foobar",
+                            filterable: true,
+                            allPages: true
+
+                        }}
+                    pdf={{
+                        allPages: true,
+                        paperSize: "A4"
+                    }}
+                    >
+                    <GridColumn field="ProductName" title="Product Name" />
+                    <GridColumn field="UnitPrice" title="Unit Price" />
+                    <GridColumn field="UnitsInStock" title="Units in Stock" />
+                </Grid>
             </div>
         );
     }
